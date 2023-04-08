@@ -44,7 +44,7 @@ const App: React.FC = () => {
           <Card>
             <TypeWriter text={text} onPrint={onPrint} />
           </Card>
-          <Card>
+          <Card className={styles.userInput}>
             <UserInput
               onConfirm={onConfirm}
               typeWriterActive={typeWriterActive}
