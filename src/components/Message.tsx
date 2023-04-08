@@ -2,7 +2,9 @@ import { IMessage } from "../model/IMessage";
 import { MessageType } from "../model/MessageType";
 import styles from "./Message.module.css";
 
-const Message: React.FC<{ message: IMessage }> = (props) => {
+const Message: React.FC<{ message: IMessage; className?: string }> = (
+  props
+) => {
   const getMessageStyle = () => {
     switch (props.message.type) {
       case MessageType.Error: {
@@ -14,7 +16,11 @@ const Message: React.FC<{ message: IMessage }> = (props) => {
     }
   };
 
-  return <div className={getMessageStyle()}>{props.message.text}</div>;
+  return (
+    <div className={`${getMessageStyle()} ${props.className}`}>
+      {props.message.text}
+    </div>
+  );
 };
 
 export default Message;

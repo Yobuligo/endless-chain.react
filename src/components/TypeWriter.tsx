@@ -30,7 +30,12 @@ const TypeWriter: React.FC<{ text: string; onPrint?: () => void }> = (
     runTypeWriter(typeWriter);
   }, [props.text, runTypeWriter]);
 
-  return <div className={styles.typeWriter}>{hideText ? "" : printedText}</div>;
+  return (
+    <div className={styles.typeWriter}>
+      <p>Remember the text</p>
+      {hideText ? "" : printedText}
+    </div>
+  );
 };
 
 export default TypeWriter;

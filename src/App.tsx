@@ -20,7 +20,10 @@ const App: React.FC = () => {
 
   const onConfirm = (enteredText: string) => {
     if (enteredText.toUpperCase() !== text.toUpperCase()) {
-      setMessage({ text: "You lose", type: MessageType.Error });
+      setMessage({
+        text: `You lose. The correct answer was '${text}'`,
+        type: MessageType.Error,
+      });
       return;
     }
 
@@ -36,13 +39,20 @@ const App: React.FC = () => {
 
   return (
     <>
-      <Card className={styles.app}>
-        <TypeWriter text={text} onPrint={onPrint} />
-      </Card>
-      <Card className={styles.app}>
-        <UserInput onConfirm={onConfirm} typeWriterActive={typeWriterActive} />
-        {message ? <Message message={message} /> : ""}
-      </Card>
+      <div className={styles.app}>
+        <div className={styles.box}>
+          <Card>
+            <TypeWriter text={text} onPrint={onPrint} />
+          </Card>
+          <Card>
+            <UserInput
+              onConfirm={onConfirm}
+              typeWriterActive={typeWriterActive}
+            />
+            {message ? <Message message={message} className={styles.message}/> : ""}
+          </Card>
+        </div>
+      </div>
     </>
   );
 };
