@@ -1,4 +1,6 @@
 import { useMemo, useState } from "react";
+import styles from "./App.module.css";
+import Card from "./components/Card";
 import Message from "./components/Message";
 import TypeWriter from "./components/TypeWriter";
 import UserInput from "./components/UserInput";
@@ -34,9 +36,13 @@ const App: React.FC = () => {
 
   return (
     <>
-      <TypeWriter text={text} onPrint={onPrint} />
-      <UserInput onConfirm={onConfirm} typeWriterActive={typeWriterActive} />
-      {message ? <Message message={message} /> : ""}
+      <Card className={styles.app}>
+        <TypeWriter text={text} onPrint={onPrint} />
+      </Card>
+      <Card className={styles.app}>
+        <UserInput onConfirm={onConfirm} typeWriterActive={typeWriterActive} />
+        {message ? <Message message={message} /> : ""}
+      </Card>
     </>
   );
 };
